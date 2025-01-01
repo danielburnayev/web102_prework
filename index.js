@@ -162,9 +162,18 @@ let unfundedGames = GAMES_JSON.filter((games) => {
 const numOfUnfunded = unfundedGames.length;
 
 // create a string that explains the number of unfunded games using the ternary operator
-
+const unfundedStr = `So far, $${GAMES_JSON.reduce((acc, game) => {
+    return acc + game.pledged;
+}, 0).toLocaleString('en-US')} have been raised, ${(numOfUnfunded != GAMES_JSON.length) 
+    ? `allowing ${GAMES_JSON.length - numOfUnfunded} games to get the funding they 
+        needed to finish them and branch out into the hands of games alike,` 
+    : ``} 
+but there are still ${numOfUnfunded} games that need your help to become the best and
+most popular versions of themselves. To help these underfunded games, donate what you 
+can here to help them get one step further into game-creating journey.`;
 
 // create a new DOM element containing the template string and append it to the description container
+
 
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games

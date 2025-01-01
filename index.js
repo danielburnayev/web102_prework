@@ -173,7 +173,9 @@ most popular versions of themselves. To help these underfunded games, donate wha
 can here to help them get one step further into game-creating journey.`;
 
 // create a new DOM element containing the template string and append it to the description container
-
+const unfundedObject = document.createElement("p");
+unfundedObject.innerHTML = unfundedStr; 
+descriptionContainer.appendChild(unfundedObject);
 
 /************************************************************************************
  * Challenge 7: Select & display the top 2 games

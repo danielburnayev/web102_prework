@@ -194,6 +194,11 @@ var first, second, rest;
 [first, second, ...rest] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
-
+const topGameName = document.createElement("p");
+topGameName.innerHTML = `${first.name}`;
+firstGameContainer.appendChild(topGameName);
 
 // do the same for the runner up item
+const secondGameName = document.createElement("p");
+secondGameName.innerHTML = `${second.name}`;
+secondGameContainer.appendChild(secondGameName);

@@ -9,6 +9,7 @@ import GAMES_DATA from './games.js';
 
 // create a list of objects to store the data about the games using JSON.parse
 const GAMES_JSON = JSON.parse(GAMES_DATA)
+var currSelectedButton = document.getElementsByClassName("selected-button")[0];
 
 // remove all child elements from a parent element in the DOM
 function deleteChildElements(parent) {
@@ -114,6 +115,12 @@ function filterUnfundedOnly() {
 
     // use the function we previously created to add the unfunded games to the DOM
     addGamesToPage(unfundedGames);
+    
+    if (unfundedBtn != currSelectedButton) {
+        unfundedBtn.classList.add("selected-button");
+        currSelectedButton.classList.remove("selected-button");
+        currSelectedButton = unfundedBtn;
+    }
 }
 
 // show only games that are fully funded
@@ -127,6 +134,12 @@ function filterFundedOnly() {
 
     // use the function we previously created to add unfunded games to the DOM
     addGamesToPage(fundedGames);
+
+    if (fundedBtn != currSelectedButton) {
+        fundedBtn.classList.add("selected-button");
+        currSelectedButton.classList.remove("selected-button");
+        currSelectedButton = fundedBtn;
+    }
 }
 
 // show all games
@@ -135,6 +148,12 @@ function showAllGames() {
 
     // add all games from the JSON data to the DOM
     addGamesToPage(GAMES_JSON);
+
+    if (allBtn != currSelectedButton) {
+        allBtn.classList.add("selected-button");
+        currSelectedButton.classList.remove("selected-button");
+        currSelectedButton = allBtn;
+    }
 }
 
 // select each button in the "Our Games" section
@@ -195,10 +214,12 @@ var first, second, rest;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
 const topGameName = document.createElement("p");
-topGameName.innerHTML = `${first.name}`;
+topGameName.innerHTML = `<b>${first.name}</b>
+<br>$${first.pledged.toLocaleString('en-US')} raised!`;
 firstGameContainer.appendChild(topGameName);
 
 // do the same for the runner up item
 const secondGameName = document.createElement("p");
-secondGameName.innerHTML = `${second.name}`;
+secondGameName.innerHTML = `<b>${second.name}</b>
+<br>$${second.pledged.toLocaleString('en-US')} raised!`;
 secondGameContainer.appendChild(secondGameName);

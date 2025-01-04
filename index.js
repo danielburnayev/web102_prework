@@ -203,14 +203,15 @@ descriptionContainer.appendChild(unfundedObject);
 
 const firstGameContainer = document.getElementById("first-game");
 const secondGameContainer = document.getElementById("second-game");
+const thirdGameContainer = document.getElementById("third-game");
 
 const sortedGames =  GAMES_JSON.sort( (item1, item2) => {
     return item2.pledged - item1.pledged;
 });
 
 // use destructuring and the spread operator to grab the first and second MOST FUNDED games
-var first, second, rest;
-[first, second, ...rest] = sortedGames;
+var first, second, third, rest;
+[first, second, third, ...rest] = sortedGames;
 
 // create a new element to hold the name of the top pledge game, then append it to the correct element
 const topGameName = document.createElement("p");
@@ -223,3 +224,8 @@ const secondGameName = document.createElement("p");
 secondGameName.innerHTML = `<b>${second.name}</b>
 <br>$${second.pledged.toLocaleString('en-US')} raised!`;
 secondGameContainer.appendChild(secondGameName);
+
+const thirdGameName = document.createElement("p");
+thirdGameName.innerHTML = `<b>${third.name}</b>
+<br>$${third.pledged.toLocaleString('en-US')} raised!`;
+thirdGameContainer.appendChild(thirdGameName);
